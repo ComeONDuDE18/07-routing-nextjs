@@ -4,25 +4,25 @@
 import { useState, useEffect } from "react";
 import { useDebounce } from "use-debounce";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { fetchNotes } from "../../lib/api";
+import { fetchNotes } from "@/lib/api";
 
 
 import css from "./Notes.module.css";
-import NoteList from "../../components/NoteList/NoteList";
-import NoteForm from "../../components/NoteForm/NoteForm";
-import SearchBox from "../../components/SearchBox/SearchBox";
-import Pagination from "../../components/Pagination/Pagination";
-import Modal from "../../components/Modal/Modal";
-import type { FetchNotesResponse } from "../../lib/api";
+import NoteList from "@/components/NoteList/NoteList";
+import NoteForm from "@/components/NoteForm/NoteForm";
+import SearchBox from "@/components/SearchBox/SearchBox";
+import Pagination from "@/components/Pagination/Pagination";
+import Modal from "@/components/Modal/Modal";
+import type { FetchNotesResponse } from "@/lib/api";
 
-interface NotesDetailsClientProps {
+type NotesDetailsClientProps = {
+  tag: string;
   initialData: FetchNotesResponse;
-}
+ }
 
 
 
-
-export default function NotesDetailsClient({ initialData }: NotesDetailsClientProps) {
+export default function NotesDetailsClient({ initialData,tag }: NotesDetailsClientProps) {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -34,7 +34,7 @@ export default function NotesDetailsClient({ initialData }: NotesDetailsClientPr
 
 const { data, isLoading, error, isSuccess } = useQuery<FetchNotesResponse>({
   queryKey: ["notes", page, debouncedSearchTerm],
-  queryFn: () => fetchNotes(page, 12, debouncedSearchTerm || ""),
+   queryFn: () => fetchNotes({ page, perPage: 12, search: debouncedSearchTerm, tag }),
   placeholderData: keepPreviousData,
     initialData,
 });
