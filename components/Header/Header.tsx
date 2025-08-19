@@ -5,7 +5,7 @@ import TagsMenu from '@/components/TagsMenu/TagsMenu';
 
 
 const Header = () => {
-   const tags = ['All', 'Work', 'Personal', 'Meeting', 'Shopping', 'Todo'];
+   const tags = ['All', 'Todo', 'Personal', 'Meeting', 'Shopping', 'Work'];
 
     return (
         <header className={css.header}>

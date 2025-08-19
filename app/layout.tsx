@@ -23,9 +23,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+    modal,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+  modal: React.ReactNode;
+   }>) { 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -33,6 +35,7 @@ export default function RootLayout({
         <div className="container">
           <Header />
           {children}
+          {modal}
           <Footer />
         </div>
              </TanStackProvider>
