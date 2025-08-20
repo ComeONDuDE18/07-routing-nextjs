@@ -5,7 +5,7 @@ import TagsMenu from '@/components/TagsMenu/TagsMenu';
 
 
 const Header = () => {
-   const tags = ['All', 'Todo', 'Personal', 'Meeting', 'Shopping', 'Work'];
+
 
     return (
         <header className={css.header}>
@@ -18,7 +18,7 @@ const Header = () => {
         <Link href="/">Home</Link>
       </li>
      <li>
-        <TagsMenu tags={tags}/>
+        <TagsMenu/>
      </li>
     </ul>
   </nav>

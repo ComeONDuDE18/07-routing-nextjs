@@ -1,7 +1,7 @@
 import css from "./SidebarNotes.module.css";
 import Link from "next/link";
 
-const tags = ['All', 'Todo', 'Personal', 'Meeting', 'Shopping', 'Work'];
+const tags = ['All', 'Work', 'Personal', 'Meeting', 'Shopping', 'Todo'];
 
 export default function SidebarNotes() {
   return (
